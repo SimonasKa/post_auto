@@ -1,0 +1,20 @@
+insert into klas.fuel_types (title)
+values ('Benzinas'), ('Dyzelis'), ('Dujos'), ('Elektra')
+
+insert into klas.car_condition (title)
+values ('Sveika'), ('Lengvai daužta'), ('Stipriai daužta'), ('Netaisoma')
+
+insert into klas.car_brand (title)
+values ('Audi'), ('BMW'), ('Mercedes'), ('Alfa Romeo'), ('Ferrari'), ('Volkswagen'), ('Lamborghini'), ('Porshe'), ('Renault'), ('Ford'), ('McLaren'), ('Jaguar')
+
+insert into klas.car_model (brandId, title, released, discontinued)
+values (1, 'A3', 1996, null), (1, 'A6', 1994, null), (2, '3 series', 1975, null), (4, '159', 2005, 2011), (5, 'Golf', 1974, null), (10, 'Ka', 1996, null)
+
+insert into klas.car_part_group (title)
+values ('Važiuokle'), ('Variklis'), ('Salonas'), ('Išores detales')
+
+insert into klas.car_part (groupId, title)
+values (1, 'Stabdžiu kaladeles'), (1, 'Stabdžiu diskai'), (1, 'Padangos'), (2, 'Žvake'), (2, 'Radiatorius'), (2, 'Baterija'), (3, 'Sedynes'), (3, 'Vairai'), (4, 'Kapotas'), (4, 'Galinis dangtis'), (4, 'Priekinis stiklas')
+
+insert into klas.car_part_condition (title)
+values ('Nauja'), ('Naudota'), ('Palužusi')
