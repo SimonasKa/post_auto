@@ -1,0 +1,74 @@
+create table klas.fuel_types (
+	id int unsigned auto_increment primary key,
+	title nvarchar(20) not null
+)
+
+create table klas.car_condition (
+	id int unsigned auto_increment primary key,
+	title nvarchar(20) not null
+)
+
+create table klas.car_brand (
+	id int unsigned auto_increment primary key,
+	title nvarchar(50) not null
+)
+
+create table klas.car_model (
+	id int unsigned auto_increment primary key,
+	brandId int foreign key references klas.car_brand(id),
+	title nvarchar(50) not null,
+	released int not null,
+	discontinued int
+)
+
+create table klas.car_part_group (
+	id int unsigned auto_increment primary key,
+	title nvarchar(50) not null
+)
+
+create table klas.car_part (
+	id int unsigned auto_increment primary key,
+	groupId int foreign key references klas.car_part_group(id),
+	title nvarchar(50) not null
+)
+
+create table klas.car_part_condition (
+	id int unsigned auto_increment primary key,
+	title nvarchar(20)
+)
+
+create table user (
+	id int unsigned auto_increment primary key,
+	title nvarchar(50) not null,
+	username nvarchar(25) not null,
+	password nvarchar(25) not null,
+	phone varchar(20) not null,
+	email nvarchar(50) not null
+)
+
+create table advert_car (
+	id int unsigned auto_increment primary key,
+	userId int foreign key references user(id),
+	modelId int foreign key references klas.car_model(id),
+	fuelType int foreign key references klas.fuel_types(id),
+	conditionId int foreign key references klas.car_condition(id),
+	year int,
+	price float,
+	date_created datetime not null default current_timestamp,
+	date_expires datetime not null,
+	custom nvarchar(max),
+	valid bit not null
+)
+
+create table advert_car (
+	id int unsigned auto_increment primary key,
+	userId int foreign key references user(id),
+	partId int foreign key references klas.car_part(id),
+	conditionId int foreign key references klas.car_part_condition(id),
+	year int,
+	price float,
+	date_created datetime not null default current_timestamp,
+	date_expires datetime not null,
+	custom nvarchar(max),
+	valid bit not null
+)
